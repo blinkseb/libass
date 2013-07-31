@@ -22,7 +22,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include <strings.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <inttypes.h>

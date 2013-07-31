@@ -63,57 +63,57 @@ void *ass_guess_buffer_cp(ASS_Library *library, unsigned char *buffer,
 /* defined in ass_strtod.c */
 double ass_strtod(const char *string, char **endPtr);
 
-static inline int d6_to_int(int x)
+static _inline int d6_to_int(int x)
 {
     return (x + 32) >> 6;
 }
-static inline int d16_to_int(int x)
+static _inline int d16_to_int(int x)
 {
     return (x + 32768) >> 16;
 }
-static inline int int_to_d6(int x)
+static _inline int int_to_d6(int x)
 {
     return x << 6;
 }
-static inline int int_to_d16(int x)
+static _inline int int_to_d16(int x)
 {
     return x << 16;
 }
-static inline int d16_to_d6(int x)
+static _inline int d16_to_d6(int x)
 {
     return (x + 512) >> 10;
 }
-static inline int d6_to_d16(int x)
+static _inline int d6_to_d16(int x)
 {
     return x << 10;
 }
-static inline double d6_to_double(int x)
+static _inline double d6_to_double(int x)
 {
     return x / 64.;
 }
-static inline int double_to_d6(double x)
+static _inline int double_to_d6(double x)
 {
     return (int) (x * 64);
 }
-static inline double d16_to_double(int x)
+static _inline double d16_to_double(int x)
 {
     return ((double) x) / 0x10000;
 }
-static inline int double_to_d16(double x)
+static _inline int double_to_d16(double x)
 {
     return (int) (x * 0x10000);
 }
-static inline double d22_to_double(int x)
+static _inline double d22_to_double(int x)
 {
     return ((double) x) / 0x400000;
 }
-static inline int double_to_d22(double x)
+static _inline int double_to_d22(double x)
 {
     return (int) (x * 0x400000);
 }
 
 // Calculate cache key for a rotational angle in degrees
-static inline int rot_key(double a)
+static _inline int rot_key(double a)
 {
     const int m = double_to_d22(360.0);
     return double_to_d22(a) % m;
@@ -121,7 +121,7 @@ static inline int rot_key(double a)
 
 #define FNV1_32A_INIT (unsigned)0x811c9dc5
 
-static inline unsigned fnv_32a_buf(void *buf, size_t len, unsigned hval)
+static _inline unsigned fnv_32a_buf(void *buf, size_t len, unsigned hval)
 {
     unsigned char *bp = buf;
     unsigned char *be = bp + len;
@@ -133,7 +133,7 @@ static inline unsigned fnv_32a_buf(void *buf, size_t len, unsigned hval)
     }
     return hval;
 }
-static inline unsigned fnv_32a_str(char *str, unsigned hval)
+static _inline unsigned fnv_32a_str(char *str, unsigned hval)
 {
     unsigned char *s = (unsigned char *) str;
     while (*s) {

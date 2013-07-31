@@ -21,7 +21,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <strings.h>
 #include <assert.h>
 #include <errno.h>
 #include <sys/types.h>
@@ -37,6 +36,14 @@
 #include "ass.h"
 #include "ass_utils.h"
 #include "ass_library.h"
+
+#pragma comment(lib, "usp10.lib")
+#pragma comment(lib, "fontconfig.lib")
+#pragma comment(lib, "libiconv.lib")
+#pragma comment(lib, "freetype246MT.lib")
+#pragma comment(lib, "libfribidi.lib")
+#pragma comment(lib, "libenca.lib")
+#pragma comment(lib, "harfbuzz.lib")
 
 #define ass_atof(STR) (ass_strtod((STR),NULL))
 

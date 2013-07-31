@@ -31,7 +31,7 @@
 /*
  * \brief Add a single point to a contour.
  */
-static inline void drawing_add_point(ASS_Drawing *drawing,
+static _inline void drawing_add_point(ASS_Drawing *drawing,
                                      FT_Vector *point)
 {
     FT_Outline *ol = &drawing->outline;
@@ -52,7 +52,7 @@ static inline void drawing_add_point(ASS_Drawing *drawing,
 /*
  * \brief Close a contour and check outline size overflow.
  */
-static inline void drawing_close_shape(ASS_Drawing *drawing)
+static _inline void drawing_close_shape(ASS_Drawing *drawing)
 {
     FT_Outline *ol = &drawing->outline;
 
@@ -214,7 +214,7 @@ static void drawing_free_tokens(ASS_DrawingToken *token)
 /*
  * \brief Update drawing cbox
  */
-static inline void update_cbox(ASS_Drawing *drawing, FT_Vector *point)
+static _inline void update_cbox(ASS_Drawing *drawing, FT_Vector *point)
 {
     FT_BBox *box = &drawing->cbox;
 
@@ -228,7 +228,7 @@ static inline void update_cbox(ASS_Drawing *drawing, FT_Vector *point)
  * \brief Translate and scale a point coordinate according to baseline
  * offset and scale.
  */
-static inline void translate_point(ASS_Drawing *drawing, FT_Vector *point)
+static _inline void translate_point(ASS_Drawing *drawing, FT_Vector *point)
 {
     point->x = drawing->point_scale_x * point->x;
     point->y = drawing->point_scale_y * -point->y;
@@ -247,27 +247,28 @@ static void drawing_evaluate_curve(ASS_Drawing *drawing,
 {
     double cx3, cx2, cx1, cx0, cy3, cy2, cy1, cy0;
     double t, h, max_accel, max_accel1, max_accel2;
+    int x0, y0, x1, y1, x2, y2, x3, y3;
     FT_Vector cur = {0, 0};
 
     cur = token->point;
     translate_point(drawing, &cur);
-    int x0 = cur.x;
-    int y0 = cur.y;
+    x0 = cur.x;
+    y0 = cur.y;
     token = token->next;
     cur = token->point;
     translate_point(drawing, &cur);
-    int x1 = cur.x;
-    int y1 = cur.y;
+    x1 = cur.x;
+    y1 = cur.y;
     token = token->next;
     cur = token->point;
     translate_point(drawing, &cur);
-    int x2 = cur.x;
-    int y2 = cur.y;
+    x2 = cur.x;
+    y2 = cur.y;
     token = token->next;
     cur = token->point;
     translate_point(drawing, &cur);
-    int x3 = cur.x;
-    int y3 = cur.y;
+    x3 = cur.x;
+    y3 = cur.y;
 
     if (spline) {
         // 1   [-1 +3 -3 +1]
