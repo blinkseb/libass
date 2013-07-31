@@ -19,3 +19,5 @@ Makefile.in
 /compile
 /libass.pc
 /m4
+win32/
+deps/
