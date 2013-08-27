@@ -36,3 +36,4 @@ ass_read_styles         @32
 ass_add_font            @33
 ass_clear_fonts         @34
 ass_step_sub            @35
+ass_set_shaper          @36

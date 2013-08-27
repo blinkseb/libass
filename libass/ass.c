@@ -38,6 +38,7 @@
 #include "ass_library.h"
 
 #pragma comment(lib, "usp10.lib")
+#pragma comment(lib, "Rpcrt4.lib")
 #pragma comment(lib, "fontconfig.lib")
 #pragma comment(lib, "libiconv.lib")
 #pragma comment(lib, "freetype246MT.lib")
